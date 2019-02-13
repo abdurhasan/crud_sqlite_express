@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/table.css">
+    <link rel="stylesheet" href="/stylesheets/pagination.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>    
+  </head>
+  <body>
+    <div class="container">
+      <div id="content">
+        <form class="filter_form" id="formInput"method="GET" action="/">
+          <h1>Filter .</h1>
+          <span>
+          <input type="text" id="formId" placeholder="ID" name="id" value="<%=query.id%>">
+          <% if(query.hasOwnProperty('checkId')){ %>
+          <input type="checkbox" name="checkId" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkId">
+          <% } %>                             
+          </span>
+
+          <span>
+
+          <input type="text" id="formString" placeholder="String" name="string" value="<%=query.string%>">
+          <% if(query.hasOwnProperty('checkString')){ %>
+          <input type="checkbox" name="checkString" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkString">
+          <% } %>
+          
+          </span>
+          <span>
+          <input type="number" id="formInt" placeholder="Integer" name="integer" value="<%=query.integer%>">
+          <% if(query.hasOwnProperty('checkInt')){ %>
+          <input type="checkbox" name="checkInt" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkInt">
+          <% } %>
+          </span>
+          <span>
+          <input type="text"id="formFloat" placeholder="Float" name="float" value="<%=query.float%>">
+          <% if(query.hasOwnProperty('checkFloat')){ %>
+          <input type="checkbox" name="checkFloat" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkFloat">
+          <% } %>
+          </span>
+          <span>
+            <select name="boolean" id="formBool">
+              <option value="<%=query.boolean%>"> - choose - </option>
+              <option> true </option>
+              <option> false </option>
+            </select>
+            <% if(query.hasOwnProperty('checkBol')){ %>
+          <input type="checkbox" name="checkBol" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkBol">
+          <% } %>
+          </span>
+          <span id="inputDate">
+          <input placeholder="Start date" id="formStartDate" type="text" onfocus="(this.type='date')" name="start_date" value="<%=query.start_date%>">
+          <% if(query.hasOwnProperty('checkDate')){ %>
+          <input type="checkbox" name="checkDate" checked>
+          <% } else{ %>  
+            <input type="checkbox" name="checkDate">
+          <% } %>
+          <input placeholder="End date" id="formEndDate" type="text" onfocus="(this.type='date')" name="end_date" value="<%=query.end_date%>">
+          </span>
+          <button type="submit" id="searchButton">Cari</button>
+        </form>
+        <div class="wrap_table">
+          <div class="table_info">
+            <div class="table">
+              <div class="row header">
+                <div class="cell">
+                  ID
+                </div>
+                <div class="cell">
+                  String
+                </div>
+                <div class="cell">
+                  Integer
+                </div>
+                <div class="cell">
+                  Float
+                </div>
+                <div class="cell">
+                  Date
+                </div>
+                <div class="cell">
+                  Boolean
+                </div>
+                <div class="cell">
+                  Action
+                </div>
+              </div>
+              <% for(i=0;i<data.length;i++){ %>
+              <div class="row">
+                <div class="cell">
+                  <%= data[i].ID %>
+                </div>
+                <div class="cell">
+                  <%= data[i].String %>
+                </div>
+                <div class="cell">
+                  <%= data[i].Integer %>
+                </div>
+                <div class="cell">
+                  <%= data[i].Float %>
+                </div>
+                <div class="cell">
+                  <%= data[i].Date %>
+                </div>
+                <div class="cell">
+                  <%= data[i].Boolean %>
+                </div>
+                <div class="cell">
+                  <a href="#modal" onclick="applyID(<%= data[i].ID %>)"><i class="fa fa-trash"></i></a>
+                  <a href="/update/<%= data[i].ID%>" ><i class="fa fa-pencil"></i></a>
+                </div>
+              </div>
+              <%}%>
+            </div>
+          </div>
+          <div class="table_pagination">
+            <div class="pagination p1">
+              <ul>
+                
+                <% for(i=1;i<=halaman;i++){%>
+                                
+                <a href="/?page=<%=`${i}&${paginationString}`%>">
+                  <li> <%=i%> </li>
+                </a>
+
+                <% } %> 
+
+              </ul>
+            </div>
+            <div class="plus">
+              <a href="/create"><i class="fa fa-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======================================== -->
+    <!--                 MODAL DELETE -->
+    <!-- ======================================== -->
+    <div class="modal" id="modal">
+      <div class="modal__content">
+        <a href="#" class="modal__close">&times;</a>
+        <div class="modal_body_delete">
+          <div class="modal_body_no"> <a> No</a></div>
+          <div class="modal_body_yes"> <a id="deletebtn"> Ya</a></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      
+      function applyID(id){
+            let deletebtn = document.getElementById('deletebtn');
+            deletebtn.setAttribute("href", `/api/delete/${id}`);            
+      }
+
+      
+    </script>
+  </body>
+</html>

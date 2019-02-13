@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>BREAD(Browse,Read,Edit,Add,Delete)</h1>
+  <h2>Filters</h2>
+
+  <form action="../search" class="form-horizontal" method="GET">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label for="id" class="col-sm-2 control-label"><input type="checkbox" value=""><b>ID</b></label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="id" name="id" placeholder="ID">
+        </div>
+      </div>
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label for="id" class="col-sm-2 control-label"><input type="checkbox" value=""><b>String</b></label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="string" name="string" placeholder="String">
+        </div>
+      </div>
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label for="id" class="col-sm-2 control-label"><input type="checkbox" value=""><b>Integer</b></label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="integer" name="integer" placeholder="Integer">
+        </div>
+      </div>
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label for="id" class="col-sm-2 control-label"><input type="checkbox" value=""><b>Float</b></label>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="float" name="float" placeholder="Float">
+        </div>
+      </div>
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label class="col-sm-2 control-label" for="sdate"><input type="checkbox" value=""><b>Date</b></label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" id="date" name="sdate" placeholder="start date">
+        </div>
+        <br></br>
+        <label class="col-sm-2 control-label" for="edate" value=""></label>
+        <div class="col-sm-4">
+          <h5>to</h5>
+          <input type="date" class="form-control" id="date" name="edate" placeholder="end date">
+        </div>
+      </div>
+
+      <br></br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="checkbox">
+            <label class="col-sm-2 control-label" for="boolean"><input type="checkbox" value=""><b>Boolean</b></label>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <select id="boolean" name="boolean" class="form-control">
+            <option value="">Choose the boolean...</option>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+      </div>
+
+      <br></br>
+
+      <button type="submit" class="btn btn-primary">Search</button>
+
+    </div>
+  </form>
+
+  <br></br>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>String</th>
+        <th>Integer</th>
+        <th>Float</th>
+        <th>Date</th>
+        <th>Boolean</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i < data.length; i++){ %>
+        <tr>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].string %></td>
+          <td><%= data[i].integer %></td>
+          <td><%= data[i].float %></td>
+          <td><%= data[i].date %></td>
+          <td><%= data[i].boolean %></td>
+          <td>
+            <a href="edit/<%= data[i].id %>" class="btn btn-success">Edit</a>
+            <a href="delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </tr>
+  </table>
+
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      <li class="page-item"><% if(currentPage != 1){ %><a class="page-link" href="/?of=<%= (currentPage -1 )*3-3 %>&cp=<%= currentPage - 1 %>">Previous</a><% } %></li>
+      <% for(let i = 1; i <= page; i++){ %>
+        <li class="page-item <%= currentPage == i ? 'active' : '' ; %>"><a class="page-link" href="/?of=<%= i*3-3 %>&cp=<%= i %>"><%= i %></a></li>
+        <% } %>
+        <li class="page-item"><% if(currentPage != page && page != 0){ %><a class="page-link" href="/?of=<%= (++currentPage)*3-3 %>&cp=<%= currentPage%>">Next</a><% } %></li>
+      </ul>
+    </nav>
+
+    <br>
+
+    <a href="add" class="btn btn-primary">Add</a>
+
+    <br>
+
+  </body>
+  </html>

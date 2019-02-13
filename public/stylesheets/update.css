@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+*{
+  font-family: Roboto Mono;    
+}
+body{    
+    background: url("/images/wallpaper.jpeg");      
+}
+.modal {
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 0;
+
+    transition: all .5s;
+  }
+
+ 
+
+  .modal__close {
+    color: #363636;
+    font-size: 2em;
+    position: absolute;
+    top: .5em;
+    right: 1em;
+    text-decoration: none
+  }
+
+          
+
+  .modal__content__update {
+    width: 20%;
+    height: 67%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    border-radius: 1.4em;    
+    
+    
+
+  }
+
+  #modal_update {
+    opacity: 1;
+    visibility: visible;
+  }
+
+
+  .modal__content__update{
+    display: flex;
+    flex-flow: column wrap;
+    
+  }
+
+
+  .modal__content__update .modal_header{
+      height: 10%;    
+      display: inline-block;      
+      margin-bottom: 2em;
+      
+  }
+
+  .modal__content__update .modal_header h2{
+      width: 60%;
+      /* margin-top: -50%; */
+  }
+  
+  .modal__content__update .modal_input{
+      /* background: red; */
+      /* margin-top: 10%; */
+      height: 60%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      
+  }
+  .modal__content__update .modal_input input{
+    width: 71%;
+    border-radius: 23px;
+    font-size: 17.8px;
+    padding: 11px;      
+    box-sizing: border-box;
+    border: 2px solid #ccc;  
+    margin-bottom: 1em;
+  }
+
+
+  .modal__content__update .modal_input button{
+      margin-top: -0.4em;
+      margin-right: -4em;
+      font-size: 3em;
+      border:none;
+      background: none;
+      
+    }
+  
+  .modal__content__update .modal_input button:hover{
+      cursor: pointer;
+  }
+  

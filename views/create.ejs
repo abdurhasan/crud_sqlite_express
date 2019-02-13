@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Form</title>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/create.css" />
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="form_content">
+          <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis repellat id autem harum temporibus ducimus quas nobis sequi error.</h2>
+          <h3><a href="/">Home.</a></h3>
+        </div>
+        <div class="add_form">
+          <h1>Add.</h1>
+          <form method="POST" action="/api/create" >
+                <div id="flex_form">                        
+                        <input type="text" placeholder="string" name="string" required>
+                        <input type="text" placeholder="integer" name="integer" required>
+                        <input type="text" placeholder="float" name="float" required>
+                        <input placeholder="Date" type="text" onclick="(this.type='date')" name="date" required>
+                        <input list="booleans" placeholder="Choose boolean" name="boolean" required>
+                        <datalist id="booleans"> <option>True</option> <option>False</option></datalist>
+                        
+                        <input type="submit" value="exec.">
+                    
+                </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </body>
+ 
+</html>

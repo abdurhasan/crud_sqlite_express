@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/update.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="modal" id="modal_update">
+
+        <div class="modal__content__update">
+              <div class="modal_header">
+                    <h1>Update .</h1>
+                    <a href="/" class="modal__close">&times;</a>
+              </div>
+              
+              <form   class="modal_input" method="POST"  action='/api/update/<%=data.ID%>'>
+                    <input type="text" name="id"  value="<%=data.ID%>" disabled>
+                    <input type="text" name="string" value="<%=data.String%>" required>
+                    <input type="number" name="integer" value="<%=data.Integer%>" required>
+                    <input type="text" name="float" value="<%=data.Float%>" required>
+                    <input type="text" name="date" onclick="(this.type='date')" onfocus="(this.value='<%=data.Date%>')" id="tgl" required>
+                    <input list="booleans" name="boolean" value="<%=data.oolean%>" required>
+                    <datalist id="booleans">
+                          <option value="true">true</option>
+                          <option value="false">false</option>
+                    </datalist>
+
+
+                    <button type="submit">
+                          <i class="fa fa-chevron-right"></i>
+                    </button>
+              </form>
+
+        </div>
+  </div>
+
+
+</body>
+</html>

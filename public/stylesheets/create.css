@@ -1,0 +1,129 @@
+
+@import url('https://fonts.googleapis.com/css?family=Oxygen+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body{
+     margin: 0;
+     padding: 0;
+     font-family: Oxygen Mono;
+     letter-spacing: 1px
+ }
+
+ section{
+    width: 100%;
+    height: 100vh;
+    background: url("/assets/images/wallpaper.jpeg");
+    background-size: cover;
+ }
+
+ .container{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     width: 700px;
+     height: 350px;
+     background: rgba(179, 177, 184, 0.7);
+     border-radius: 13.7px;
+     box-shadow: -20px 15px 15px rgba(0,0,0,.4 );
+     
+ }
+
+ .container .form_content,
+ .container .add_form
+ {
+     
+     position: relative;
+     width: 50%;
+     height: 550px;
+     float: left;
+     box-sizing: border-box;  
+     border-radius: 9.7px;          
+     
+ }
+
+ .container .form_content{
+     padding-left: 50px;
+     color: #fff;     
+     border-radius: 9.7px;
+ } 
+ 
+ .container .form_content a{
+     text-decoration: none;
+     color: #fff;
+     display: inline-block;
+     padding: 10px 20px;
+     background: #ff0057;
+     opacity: 0.93;
+     border-radius: 41.9px;
+          
+ }
+ .container .form_content a:hover{
+        background: #2e2b35
+ }
+ .container .add_form
+ {
+      top: -24.7px;
+      background: #4C3C4C ;
+      opacity: 0.897;
+      height: 464px;
+      box-shadow: 18.92px 15px 25px rgba(0,0,0,.3 );            
+     padding: 30px
+ }
+ .container .add_form h1{
+    color :whitesmoke;
+    margin-top: -11px;
+    font-size: 39.9px;
+    font-display: bold;
+    margin-left: 15% 
+ }
+
+ .container .add_form input,select{
+        display: block;
+        margin-bottom: 3%;
+        width: 87.9%;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        outline: none;
+        font-display: bold;
+        border-radius: 23px;
+        font-size: 15.8px;
+        padding: 11px;
+        top: -15px;
+        position: relative;
+        font-weight: bold;
+        font-family: 'Roboto Mono', monospace;
+        color: rgba(2, 26, 18);   
+  
+ }
+ 
+ 
+.container .add_form input:hover
+{
+    border: 5px solid #2e2b35;   
+}
+
+
+.container .add_form input[type="submit"]{
+    width: 40% !important;
+    background: #2e2b35;
+    border: none;
+    box-shadow: none;
+    color: #ccc;
+    font-size: 19.98px;
+    font-weight: bold;
+    float: right;
+    margin-right: 3%;
+    vertical-align: middle
+}
+.container .add_form input[type="submit"]:hover{
+    cursor: pointer;
+    background: #ff0057;
+    color: white   
+}
+
+.container .add_form select{
+    height: 37.9px;
+    border-radius: 25px
+}
+
